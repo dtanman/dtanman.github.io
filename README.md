@@ -1,2 +1,2 @@
-# dtanman.github.io
-Resetting my personal site!
+# dTanMan.github.io
+Personal page! I hope i can actually make this work

@@ -1,0 +1,113 @@
+<!--
+External Code Snippets used:
+1. JQuery Google CDN
+  o linked externally
+
+2. Numeric +/- input form
+  o http://jsfiddle.net/polaszk/1oyfxoor/
+-->
+
+<html>
+  <meta charset="utf-8"/>
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PBGS7CZ');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Global Site Tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131016686-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-131016686-1');
+    </script> -->
+    <link rel="stylesheet" type="text/css" href="../css/nihao.css">
+    <link rel="stylesheet" type="text/css" href="../css/shop.css">
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PBGS7CZ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <form action="checkout.htm">
+      <div id="shop" class="panel">
+        <div id="opener" class="flex">
+          <p><span class="big_text">Welcome to <span class="black_text">T-Graffity</span>.</span><br>
+            Our shirts are of the most prime quality -- perfect for millenials.</p>
+        </div>
+        <div id="body" class="flex">
+          <div id="shirt1" class="item_tile">
+            <img class="shirt_pic" src="../img/shirts/white shirt.jpg"></img>
+            <p>
+              <span class="store_item">Bái</span> <br>
+              <span class="store_price">₱1,200.00</span>
+            </p>
+            <div id="shirt1_input" class="input-group">
+              <input type="button" value="-" class="button-minus" data-field="bai">
+              <input type="number" step="1" max="" value="0" name="bai" class="quantity-field">
+              <input type="button" value="+" class="button-plus" data-field="bai">
+            </div>
+          </div>
+          <div id="shirt2" class="item_tile">
+            <img class="shirt_pic" src="../img/shirts/black shirt.jpg"></img>
+            <p>
+              <span class="store_item">Hēi</span> <br>
+              <span class="store_price">₱1,900.00</span>
+            </p>
+            <div id="shirt2_input" class="input-group">
+              <input type="button" value="-" class="button-minus" data-field="hei">
+              <input type="number" step="1" max="" value="0" name="hei" class="quantity-field">
+              <input type="button" value="+" class="button-plus" data-field="hei">
+            </div>
+          </div>
+          <div id="shirt3" class="item_tile">
+            <img class="shirt_pic" src="../img/shirts/brown shirt.jpg"></img>
+            <p>
+              <span class="store_item">Zōng</span> <br>
+              <span class="store_price">₱3,000.00</span>
+            </p>
+            <div id="shirt3_input" class="input-group">
+              <input type="button" value="-" class="button-minus" data-field="zong">
+              <input type="number" step="1" max="" value="0" name="zong" class="quantity-field">
+              <input type="button" value="+" class="button-plus" data-field="zong">
+            </div>
+          </div>
+          <div id="shirt4" class="item_tile">
+            <img class="shirt_pic" src="../img/shirts/red shirt.jpg"></img>
+            <p>
+              <span class="store_item">Hóng</span> <br>
+              <span class="store_price">₱8,000.00</span>
+            </p>
+            <div id="shirt4_input" class="input-group">
+              <input type="button" value="-" class="button-minus" data-field="hong">
+              <input type="number" step="1" max="" value="0" name="hong" class="quantity-field">
+              <input type="button" value="+" class="button-plus" data-field="hong">
+            </div>
+          </div>
+          <div id="shirt5" class="item_tile">
+            <img class="shirt_pic" src="../img/shirts/meme shirt.png"></img>
+            <p>
+              <span class="store_item">Zhě</span> <br>
+              <span class="store_price">₱69,000.00</span>
+            </p>
+            <div id="shirt5_input" class="input-group">
+              <input type="button" value="-" class="button-minus" data-field="zhe">
+              <input type="number" step="1" max="" value="0" name="zhe" class="quantity-field">
+              <input type="button" value="+" class="button-plus" data-field="zhe">
+            </div>
+          </div>
+        </div>
+        <div id="footer" class="flex">
+          <input type="submit" value="Checkout"></input>
+        </div>
+      </div>
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../js/number_box.js"></script>
+  </body>
+</html>

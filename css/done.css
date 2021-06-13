@@ -1,0 +1,34 @@
+body {
+  background-color: #5F4B8B;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+#thanks {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 75%;
+}
+
+  #text {
+    width: 100%;
+    /* background-color: pink; */
+    font-size: 1.5em;
+    align-self: flex-end;
+    padding-bottom: 40px;
+  }
+
+  #buttons {
+    width: 100%;
+    height: 30%;
+    /* background-color: lavender; */
+    font-size: 1.5em;
+    align-self: flex-start;
+  }
