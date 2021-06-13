@@ -1,0 +1,90 @@
+#button-pp {
+    height: 75px;
+    width: 75px;
+}
+
+.ship {
+    height: 60px;
+    width: 60px;
+}
+
+#container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#player {
+    border: 2px solid black;
+    border-radius: 2%;
+    width: 300px;
+    height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#panel-playpause {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#panel-ships {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5px;
+}
+
+#debugging-text {
+    text-align: center;
+    background-color: bisque;
+
+}
+
+.panel-button {
+    text-align: center;
+}
+
+#onboarding {
+    background-color: cornflowerblue;
+    display: block;
+    position: relative;
+    width: 200px;
+    border-radius: 5%;
+    padding: 4px;
+    left: 40%;
+}
+
+.ab-button {
+    visibility: hidden;
+}
+
+.ab-a {
+    background-color: #333333;
+    border-radius: 30%;
+    color: white;
+    font-size: small;
+    padding: 3px;
+}
+
+.ab-b {
+    border: 1px solid #333333;
+    border-radius: 30%;
+    color: #333333;
+    font-size: small;
+    padding: 3px;
+}
+
+/* purple: #7c5fb9 */
