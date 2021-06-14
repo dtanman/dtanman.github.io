@@ -22,10 +22,13 @@ const SHIP_PNG = [[
 // DOM elements
 const test = document.getElementById("debugging-text")
 const pp = document.getElementById("button-pp") // pp = play pause
-const aim = document.getElementById("ship-aim")
-const bubble = document.getElementById("ship-bubble")
-const gatling = document.getElementById("ship-gatling")
-const spread = document.getElementById("ship-spread")
+const ship_dom = [
+    null,
+    document.getElementById("ship-aim"),
+    document.getElementById("ship-bubble"),
+    document.getElementById("ship-gatling"),
+    document.getElementById("ship-spread"),
+]
 
 const dom_ab = [[
     ], [
@@ -134,7 +137,7 @@ function toggleGatling() {
     }
 
     st_audio[id] = !st_audio[id]
-    gatling.src = SHIP_PNG[id][st_audio[id]*1]
+    ship_dom[id].src = SHIP_PNG[id][st_audio[id] * 1]
     audios[id].volume = st_audio[id] * 1
 }
 
@@ -145,7 +148,7 @@ function toggleAim() {
         beeps[id].play()
     }
     st_audio[id] = !st_audio[id]
-    aim.src = SHIP_PNG[id][st_audio[id]*1]
+    ship_dom[id].src = SHIP_PNG[id][st_audio[id]*1]
     audios[id].volume = st_audio[id] * 1
 }
 
@@ -156,7 +159,7 @@ function toggleSpread() {
         beeps[id].play()
     }
     st_audio[id] = !st_audio[id]
-    spread.src = SHIP_PNG[id][st_audio[id]*1]
+    ship_dom[id].src = SHIP_PNG[id][st_audio[id] * 1]
     audios[id].volume = st_audio[id] * 1
 }
 
@@ -167,6 +170,6 @@ function toggleBubble() {
         beeps[id].play()
     }
     st_audio[id] = !st_audio[id]
-    bubble.src = SHIP_PNG[id][st_audio[id]*1]
+    ship_dom[id].src = SHIP_PNG[id][st_audio[id] * 1]
     audios[id].volume = st_audio[id] * 1
 }
