@@ -55,6 +55,13 @@ let B = 0;
 let st_audio = [true, false, false, false, false]
 
 
+// constants
+const AIM = 1;
+const BUBBLE = 2;
+const GATLING = 3;
+const SPREAD = 4;
+
+
 // audio
 const audio_names = [
     "base",
@@ -128,48 +135,78 @@ function check_states() {
     console.log(`${1*st_audio[0]}, ${1*st_audio[1]}, ${1*st_audio[2]}, ${1*st_audio[3]}, ${1*st_audio[4]}`)
 }
 
-function toggleGatling() {
-    let id = 3
-    test.innerHTML = "Gatling was pressed!"
+function check_ab() {
+    console.log(`A: ${A}, B: ${B}`)
+}
 
-    if(!playing && !st_audio[id]) {
+function update_ship(id) {
+    if (!playing && !st_audio[id]) {
         beeps[id].play()
     }
 
     st_audio[id] = !st_audio[id]
     ship_dom[id].src = SHIP_PNG[id][st_audio[id] * 1]
     audios[id].volume = st_audio[id] * 1
+}
+
+function update_state(id) {
+    // states
+    if (A == 0) {
+        A = id
+        dom_ab[id][0].style.visibility = "visible"
+    }
+    else if (A == id) {
+        A = 0
+        dom_ab[id][0].style.visibility = "hidden"
+
+        if (B!=0) {
+            // current B becomes A
+            dom_ab[B][1].style.visibility = "hidden"
+            dom_ab[B][0].style.visibility = "visible"
+            A = B
+            B = 0
+        }
+    }
+    else if (B == 0) {
+        B = id
+        dom_ab[id][1].style.visibility = "visible"
+    }
+    else if (B == id) {
+        B = 0
+        dom_ab[id][1].style.visibility = "hidden"
+    }
+    else {
+        dom_ab[B][1].style.visibility = "hidden"
+        dom_ab[id][1].style.visibility = "visible"
+        update_ship(B)
+        B = id
+    }
+}
+
+function toggleGatling() {
+    test.innerHTML = "Gatling was pressed!"
+    update_ship(GATLING)
+    update_state(GATLING)
+    check_ab()
 }
 
 function toggleAim() {
     test.innerHTML = "Aim was pressed!"
-    let id = 1
-    if(!playing && !st_audio[id]) {
-        beeps[id].play()
-    }
-    st_audio[id] = !st_audio[id]
-    ship_dom[id].src = SHIP_PNG[id][st_audio[id]*1]
-    audios[id].volume = st_audio[id] * 1
+    update_ship(AIM)
+    update_state(AIM)
+    check_ab()
 }
 
 function toggleSpread() {
     test.innerHTML = "Spread was pressed!"
-    let id = 4
-    if(!playing && !st_audio[id]) {
-        beeps[id].play()
-    }
-    st_audio[id] = !st_audio[id]
-    ship_dom[id].src = SHIP_PNG[id][st_audio[id] * 1]
-    audios[id].volume = st_audio[id] * 1
+    update_ship(SPREAD)
+    update_state(SPREAD)
+    check_ab()
 }
 
 function toggleBubble() {
     test.innerHTML = "Bubble was pressed!"
-    let id = 2
-    if(!playing && !st_audio[id]) {
-        beeps[id].play()
-    }
-    st_audio[id] = !st_audio[id]
-    ship_dom[id].src = SHIP_PNG[id][st_audio[id] * 1]
-    audios[id].volume = st_audio[id] * 1
+    update_ship(BUBBLE)
+    update_state(BUBBLE)
+    check_ab()
 }
