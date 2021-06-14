@@ -72,7 +72,7 @@ for(let i=0; i<audio_names.length; i++) {
 audios[0].volume = 0.8
 
 const au_intro = document.createElement("AUDIO")
-au_intro.src = "./assets/music/0-Intro.mp3"
+au_intro.src = "./assets/music/0-intro.mp3"
 au_intro.onended = () => {
     test.innerHTML = "Done!"
     intro_done = true
