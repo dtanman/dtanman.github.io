@@ -176,26 +176,22 @@ function toggleGatling() {
     test.innerHTML = "Gatling was pressed!"
     update_ship(GATLING)
     update_state(GATLING)
-    check_ab()
 }
 
 function toggleAim() {
     test.innerHTML = "Aim was pressed!"
     update_ship(AIM)
     update_state(AIM)
-    check_ab()
 }
 
 function toggleSpread() {
     test.innerHTML = "Spread was pressed!"
     update_ship(SPREAD)
     update_state(SPREAD)
-    check_ab()
 }
 
 function toggleBubble() {
     test.innerHTML = "Bubble was pressed!"
     update_ship(BUBBLE)
     update_state(BUBBLE)
-    check_ab()
 }
