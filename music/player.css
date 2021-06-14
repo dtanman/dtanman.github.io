@@ -67,24 +67,24 @@
     left: 40%;
 }
 
-.ab-button {
+.v-indicator {
     visibility: hidden;
+    font-size: 8px;
 }
 
-.ab-a {
-    background-color: #333333;
-    border-radius: 30%;
-    color: white;
-    font-size: small;
-    padding: 3px;
+#gatling-v {
+    color: rgb(235,143,117);
 }
 
-.ab-b {
-    border: 1px solid #333333;
-    border-radius: 30%;
-    color: #333333;
-    font-size: small;
-    padding: 3px;
+#aim-v {
+    color: rgb(214,187,110);
 }
 
+#spread-v {
+    color: rgb(129,216,195);
+}
+
+#bubble-v {
+    color: rgb(170,219,114);
+}
 /* purple: #7c5fb9 */

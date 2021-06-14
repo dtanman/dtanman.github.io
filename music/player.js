@@ -30,20 +30,12 @@ const ship_dom = [
     document.getElementById("ship-spread"),
 ]
 
-const dom_ab = [[
-    ], [
-        document.getElementById("aim-a"),
-        document.getElementById("aim-b"),
-    ], [
-        document.getElementById("bubble-a"),
-        document.getElementById("bubble-b"),
-    ], [
-        document.getElementById("gatling-a"),
-        document.getElementById("gatling-b"),
-    ], [
-        document.getElementById("spread-a"),
-        document.getElementById("spread-b"),
-    ]
+const dom_v = [
+    null,
+    document.getElementById("aim-v"),
+    document.getElementById("bubble-v"),
+    document.getElementById("gatling-v"),
+    document.getElementById("spread-v"),
 ]
 
 
@@ -153,31 +145,25 @@ function update_state(id) {
     // states
     if (A == 0) {
         A = id
-        dom_ab[id][0].style.visibility = "visible"
+        dom_v[id].style.visibility = "visible"
     }
     else if (A == id) {
         A = 0
-        dom_ab[id][0].style.visibility = "hidden"
+        dom_v[id].style.visibility = "hidden"
 
         if (B!=0) {
-            // current B becomes A
-            dom_ab[B][1].style.visibility = "hidden"
-            dom_ab[B][0].style.visibility = "visible"
+            dom_v[B].style.visibility = "visible"
             A = B
             B = 0
         }
     }
     else if (B == 0) {
         B = id
-        dom_ab[id][1].style.visibility = "visible"
     }
     else if (B == id) {
         B = 0
-        dom_ab[id][1].style.visibility = "hidden"
     }
     else {
-        dom_ab[B][1].style.visibility = "hidden"
-        dom_ab[id][1].style.visibility = "visible"
         update_ship(B)
         B = id
     }
