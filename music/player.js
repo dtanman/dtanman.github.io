@@ -67,12 +67,14 @@ for(let i=0; i<audio_names.length; i++) {
     song.src = `./assets/music/1-${audio_names[i]}.mp3`
     song.loop = true
     song.volume = 0
+    song.preload = "auto"
     audios.push(song)
 }
 audios[0].volume = 0.8
 
 const au_intro = document.createElement("AUDIO")
 au_intro.src = "./assets/music/0-intro.mp3"
+au_intro.preload = "auto"
 au_intro.onended = () => {
     test.innerHTML = "Done!"
     intro_done = true
