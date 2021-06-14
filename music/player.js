@@ -52,6 +52,7 @@ const AIM = 1;
 const BUBBLE = 2;
 const GATLING = 3;
 const SPREAD = 4;
+const VOL = 0.75;
 
 
 // audio
@@ -72,10 +73,11 @@ for(let i=0; i<audio_names.length; i++) {
     song.preload = "auto"
     audios.push(song)
 }
-audios[0].volume = 0.8
+audios[0].volume = 0.8 * VOL
 
 const au_intro = document.createElement("AUDIO")
 au_intro.src = "./assets/music/0-intro.mp3"
+au_intro.volume = VOL
 au_intro.preload = "auto"
 au_intro.onended = () => {
     test.innerHTML = "Done!"
@@ -90,6 +92,7 @@ let beeps = [null]
 for (let i = 1; i < audio_names.length; i++) {
     let beep = document.createElement("AUDIO")
     beep.src = `./assets/music/2-${audio_names[i]}_beep.mp3`
+    beep.volume = VOL
     beeps.push(beep)
 }
 
@@ -104,7 +107,7 @@ function playPause() {
         if(intro_done){
             audios[0].play();
             for(let i=1; i<audios.length; i++) {
-                audios[i].volume = 1 * st_audio[i]
+                audios[i].volume = VOL * st_audio[i]
                 audios[i].play();
             }
         } else {
@@ -138,7 +141,7 @@ function update_ship(id) {
 
     st_audio[id] = !st_audio[id]
     ship_dom[id].src = SHIP_PNG[id][st_audio[id] * 1]
-    audios[id].volume = st_audio[id] * 1
+    audios[id].volume = VOL * st_audio[id]
 }
 
 function update_state(id) {
