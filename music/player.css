@@ -57,16 +57,6 @@
     text-align: center;
 }
 
-#onboarding {
-    background-color: cornflowerblue;
-    display: block;
-    position: relative;
-    width: 200px;
-    border-radius: 5%;
-    padding: 4px;
-    left: 40%;
-}
-
 .v-indicator {
     visibility: hidden;
     font-size: 8px;
