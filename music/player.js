@@ -68,12 +68,18 @@ let audios = []
 for(let i=0; i<audio_names.length; i++) {
     let song = document.createElement("AUDIO")
     song.src = `./assets/music/1-${audio_names[i]}.mp3`
-    song.loop = true
     song.volume = 0
     song.preload = "auto"
     audios.push(song)
 }
 audios[0].volume = 0.8 * VOL
+
+// when the 7 minutes are done, no need to loop
+audios[audios.length-1].onended = () => {
+    pp.src = PLAY_PNG;
+    playing = false;
+    intro_done = false;
+}
 
 const au_intro = document.createElement("AUDIO")
 au_intro.src = "./assets/music/0-intro.mp3"
