@@ -78,3 +78,21 @@
     color: rgb(170,219,114);
 }
 /* purple: #7c5fb9 */
+
+@media screen and (max-width: 980px) {
+  #player {
+    width: 50%;
+    height: 25%;
+  }
+  #button-pp {
+    width: 150px;
+    height: 150px;
+  }
+  .ship {
+    width: 90px;
+    height: 90px;
+  }
+  .panel-button {
+    font-size: 1.75em;
+  }
+}
