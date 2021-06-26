@@ -95,7 +95,7 @@ au_intro.onended = () => {
 // beeps
 let beeps = [null]
 
-for (let i = 1; i < audio_names.length; i++) {
+for (let i=1; i<audio_names.length; i++) {
     let beep = document.createElement("AUDIO")
     beep.src = `./assets/music/2-${audio_names[i]}_beep.mp3`
     beep.volume = VOL
