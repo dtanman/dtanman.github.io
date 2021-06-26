@@ -1,6 +1,6 @@
 // images
-const PAUSE_PNG = "assets/icons/pause.png"
-const PLAY_PNG = "assets/icons/play.png"
+const PAUSE_PNG = "assets/icons/pause_w.png"
+const PLAY_PNG = "assets/icons/play_w.png"
 
 const SHIP_PNG = [[
     ], [
