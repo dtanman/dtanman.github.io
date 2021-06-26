@@ -42,6 +42,7 @@ const dom_v = [
 // variables
 let playing = false;
 let intro_done = false;
+let play_all = false;
 let A = 0;
 let B = 0;
 let st_audio = [true, false, false, false, false]
@@ -157,6 +158,18 @@ function stop() {
     pp.src = PLAY_PNG
 }
 
+function playAll() {
+    play_all = !play_all
+    for (let i=1; i<audio_names.length; i++) {
+        st_audio[i] = play_all
+        dom_v[i].style.visibility = play_all ? "visible" : "hidden"
+        ship_dom[i].src = SHIP_PNG[i][play_all?1:0]
+        audios[i].volume = VOL * (play_all? 1 : 0)
+    }
+    A = 0
+    B = 0
+}
+
 function check_states() {
     console.log(`${1*st_audio[0]}, ${1*st_audio[1]}, ${1*st_audio[2]}, ${1*st_audio[3]}, ${1*st_audio[4]}`)
 }
@@ -205,24 +218,28 @@ function update_state(id) {
 
 function toggleGatling() {
     test.innerHTML = "Gatling was pressed!"
+    if(play_all) return;
     update_ship(GATLING)
     update_state(GATLING)
 }
 
 function toggleAim() {
     test.innerHTML = "Aim was pressed!"
+    if(play_all) return;
     update_ship(AIM)
     update_state(AIM)
 }
 
 function toggleSpread() {
     test.innerHTML = "Spread was pressed!"
+    if(play_all) return;
     update_ship(SPREAD)
     update_state(SPREAD)
 }
 
 function toggleBubble() {
     test.innerHTML = "Bubble was pressed!"
+    if(play_all) return;
     update_ship(BUBBLE)
     update_state(BUBBLE)
 }
