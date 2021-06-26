@@ -132,6 +132,31 @@ function playPause() {
     }
 }
 
+function stop() {
+    // reset the seek of all tracks
+    au_intro.currentTime = 0
+    au_intro.pause();
+    for(let i=0; i<audio_names.length; i++) {
+        audios[i].currentTime = 0
+        audios[i].pause()
+        st_audio[i] = false
+        if(i>0) {
+            dom_v[i].style.visibility = "hidden"
+            ship_dom[i].src = SHIP_PNG[i][0]
+            audios[i].volume = 0
+        }
+    }
+
+    // reset state-related variables
+    playing = false
+    intro_done = false
+    A = 0
+    B = 0
+
+    // back to being a play button
+    pp.src = PLAY_PNG
+}
+
 function check_states() {
     console.log(`${1*st_audio[0]}, ${1*st_audio[1]}, ${1*st_audio[2]}, ${1*st_audio[3]}, ${1*st_audio[4]}`)
 }
