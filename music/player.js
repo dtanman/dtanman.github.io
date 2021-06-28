@@ -160,15 +160,25 @@ function stop() {
 }
 
 function playAll() {
-    play_all = !play_all
     for (let i=1; i<audio_names.length; i++) {
-        st_audio[i] = play_all
-        dom_v[i].style.visibility = play_all ? "visible" : "hidden"
-        ship_dom[i].src = SHIP_PNG[i][play_all?1:0]
-        audios[i].volume = VOL * (play_all? 1 : 0)
+        if(!play_all) {
+            st_audio[i] = true
+            dom_v[i].style.visibility = "visible"
+            ship_dom[i].src = SHIP_PNG[i][1]
+            audios[i].volume = VOL
+        } else {
+            if(i!=A && i!=B) {
+                st_audio[i] = false
+                dom_v[i].style.visibility = "hidden"
+                ship_dom[i].src = SHIP_PNG[i][0]
+                audios[i].volume = 0
+            }
+            else if(i==B) {
+                dom_v[i].style.visibility = "hidden"
+            }
+        }
     }
-    A = 0
-    B = 0
+    play_all = !play_all
 }
 
 function check_states() {
