@@ -151,6 +151,7 @@ function stop() {
     // reset state-related variables
     playing = false
     intro_done = false
+    play_all = false
     A = 0
     B = 0
 
