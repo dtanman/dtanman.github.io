@@ -22,6 +22,8 @@ const SHIP_PNG = [[
 // DOM elements
 const test = document.getElementById("debugging-text")
 const pp = document.getElementById("button-pp") // pp = play pause
+const all = document.getElementById("button-warning")
+
 const ship_dom = [
     null,
     document.getElementById("ship-aim"),
@@ -254,3 +256,9 @@ function toggleBubble() {
     update_ship(BUBBLE)
     update_state(BUBBLE)
 }
+
+function show_all() {
+    all.style.visibility = "visible";
+}
+
+setTimeout(show_all, 240000)
