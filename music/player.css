@@ -73,6 +73,15 @@
     text-align: center;
 }
 
+.panel-button-top {
+    opacity: 0.6;
+}
+
+.panel-button-top:hover {
+    opacity: 1;
+    transition-delay: 110ms;
+}
+
 .v-indicator {
     visibility: hidden;
     font-size: 1em;
