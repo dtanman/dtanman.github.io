@@ -22,6 +22,8 @@ const SHIP_PNG = [[
 // DOM elements
 const test = document.getElementById("debugging-text")
 const pp = document.getElementById("button-pp") // pp = play pause
+const all = document.getElementById("button-warning")
+
 const ship_dom = [
     null,
     document.getElementById("ship-aim"),
@@ -42,6 +44,7 @@ const dom_v = [
 // variables
 let playing = false;
 let intro_done = false;
+let play_all = false;
 let A = 0;
 let B = 0;
 let st_audio = [true, false, false, false, false]
@@ -95,7 +98,7 @@ au_intro.onended = () => {
 // beeps
 let beeps = [null]
 
-for (let i = 1; i < audio_names.length; i++) {
+for (let i=1; i<audio_names.length; i++) {
     let beep = document.createElement("AUDIO")
     beep.src = `./assets/music/2-${audio_names[i]}_beep.mp3`
     beep.volume = VOL
@@ -130,6 +133,54 @@ function playPause() {
             audios.forEach(audio => { audio.pause() })
         }
     }
+}
+
+function stop() {
+    // reset the seek of all tracks
+    au_intro.currentTime = 0
+    au_intro.pause();
+    for(let i=0; i<audio_names.length; i++) {
+        audios[i].currentTime = 0
+        audios[i].pause()
+        st_audio[i] = false
+        if(i>0) {
+            dom_v[i].style.visibility = "hidden"
+            ship_dom[i].src = SHIP_PNG[i][0]
+            audios[i].volume = 0
+        }
+    }
+
+    // reset state-related variables
+    playing = false
+    intro_done = false
+    play_all = false
+    A = 0
+    B = 0
+
+    // back to being a play button
+    pp.src = PLAY_PNG
+}
+
+function playAll() {
+    for (let i=1; i<audio_names.length; i++) {
+        if(!play_all) {
+            st_audio[i] = true
+            dom_v[i].style.visibility = "visible"
+            ship_dom[i].src = SHIP_PNG[i][1]
+            audios[i].volume = VOL
+        } else {
+            if(i!=A && i!=B) {
+                st_audio[i] = false
+                dom_v[i].style.visibility = "hidden"
+                ship_dom[i].src = SHIP_PNG[i][0]
+                audios[i].volume = 0
+            }
+            else if(i==B) {
+                dom_v[i].style.visibility = "hidden"
+            }
+        }
+    }
+    play_all = !play_all
 }
 
 function check_states() {
@@ -180,24 +231,34 @@ function update_state(id) {
 
 function toggleGatling() {
     test.innerHTML = "Gatling was pressed!"
+    if(play_all) return;
     update_ship(GATLING)
     update_state(GATLING)
 }
 
 function toggleAim() {
     test.innerHTML = "Aim was pressed!"
+    if(play_all) return;
     update_ship(AIM)
     update_state(AIM)
 }
 
 function toggleSpread() {
     test.innerHTML = "Spread was pressed!"
+    if(play_all) return;
     update_ship(SPREAD)
     update_state(SPREAD)
 }
 
 function toggleBubble() {
     test.innerHTML = "Bubble was pressed!"
+    if(play_all) return;
     update_ship(BUBBLE)
     update_state(BUBBLE)
 }
+
+function show_all() {
+    all.style.visibility = "visible";
+}
+
+setTimeout(show_all, 240000)

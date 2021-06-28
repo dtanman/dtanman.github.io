@@ -3,9 +3,18 @@
   src: url('../fonts/Raleway/Raleway-Regular.ttf');
 }
 
+.player-button {
+    height: auto;
+    width: 25%;
+}
+
 #button-pp {
     height: auto;
-    width: 20%;
+    width: 70%;
+}
+
+#button-warning {
+    visibility: hidden;
 }
 
 .ship {
