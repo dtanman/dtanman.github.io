@@ -14,7 +14,7 @@
 }
 
 #button-warning {
-    visibility: hidden;
+    opacity: 0;
 }
 
 .ship {

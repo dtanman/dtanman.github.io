@@ -258,7 +258,7 @@ function toggleBubble() {
 }
 
 function show_all() {
-    all.style.visibility = "visible";
+    all.style.opacity = 1;
 }
 
 setTimeout(show_all, 240000)
