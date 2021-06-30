@@ -1,4 +1,5 @@
-// images
+//  constants
+const default_notice = "choose two, and hit play."
 const PAUSE_PNG = "assets/icons/pause_w.png"
 const PLAY_PNG = "assets/icons/play_w.png"
 
@@ -23,6 +24,7 @@ const SHIP_PNG = [[
 const test = document.getElementById("debugging-text")
 const pp = document.getElementById("button-pp") // pp = play pause
 const all = document.getElementById("button-warning")
+const notice = document.getElementById("notice-text")
 
 const ship_dom = [
     null,
@@ -194,6 +196,12 @@ function playAll() {
             }
         }
     }
+    if(!play_all) {
+        notice.innerHTML = "you chose four. undo to return to toggling."
+    } else {
+        notice.innerHTML = default_notice
+    }
+
     play_all = !play_all
 }
 
