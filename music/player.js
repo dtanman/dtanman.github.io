@@ -106,6 +106,20 @@ for (let i=1; i<audio_names.length; i++) {
 }
 
 
+// keyboard listeners
+document.addEventListener('keyup', (e)=>{
+    switch(e.key) {
+        case '1': toggleGatling(); break;
+        case '2': toggleAim(); break;
+        case '3': toggleSpread(); break;
+        case '4': toggleBubble(); break;
+        case ' ': playPause(); break;
+        case 'x': stop(); break;
+        case 'm': playAll(); break;
+    }
+})
+
+
 // functions
 function playPause() {
     if(!playing) {
