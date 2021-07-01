@@ -68,6 +68,33 @@ const audio_names = [
     "gatling",
     "spread",
 ]
+
+let audioPath = "assets/music/"
+let sounds = []
+// intro
+sounds.push({
+    id: "intro",
+    src: "0-intro.mp3"
+})
+// base
+sounds.push({
+    id: audio_names[0],
+    src: `1-${audio_names[0]}.mp3`
+})
+// ship music
+for (let i = 1; i < audio_names.length; i++) {
+    sounds.push({
+        id: audio_names[i],
+        src: `1-${audio_names[i]}.mp3`
+    })
+    sounds.push({
+        id: audio_names[i]+'-beep',
+        src: `2-${audio_names[i]}-beep.mp3`
+    })
+}
+
+// ========
+
 let audios = []
 
 for(let i=0; i<audio_names.length; i++) {
@@ -123,6 +150,16 @@ document.addEventListener('keyup', (e)=>{
 
 
 // functions
+function init() {
+    // create an array and audioPath (above)
+    createjs.Sound.addEventListener("fileload", handleLoaded);
+    createjs.Sound.registerSounds(sounds, audioPath);
+}
+
+function handleLoaded() {
+    console.log('loaded na dapat')
+}
+
 function playPause() {
     if(!playing) {
         test.innerHTML = "Play was pressed!"
@@ -136,7 +173,8 @@ function playPause() {
                 audios[i].play();
             }
         } else {
-            au_intro.play()
+            // au_intro.play()
+            createjs.Sound.play("intro")
         }
     } else {
         test.innerHTML = "Pause was pressed!"
