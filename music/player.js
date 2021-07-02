@@ -173,6 +173,7 @@ function stop() {
 
     // back to being a play button
     pp.src = PLAY_PNG
+    notice.innerHTML = default_notice
 }
 
 function playAll() {
