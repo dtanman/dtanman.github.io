@@ -69,42 +69,40 @@ const audio_names = [
     "spread",
 ]
 let audios = []
-
-for(let i=0; i<audio_names.length; i++) {
-    let song = document.createElement("AUDIO")
-    song.src = `./assets/music/1-${audio_names[i]}.mp3`
-    song.volume = 0
-    song.preload = "auto"
-    audios.push(song)
-}
-audios[0].volume = 0.8 * VOL
-
-// when the 7 minutes are done, no need to loop
-audios[audios.length-1].onended = () => {
-    pp.src = PLAY_PNG;
-    playing = false;
-    intro_done = false;
+audios.push(new Howl({
+    src: `./assets/music/1-${audio_names[0]}.mp3`,
+    volume: 0.8*VOL,
+    // when the 7 minutes are done, no need to loop
+    onend: function () {
+        notice.innerHTML = "thanks for listening! please share :)"
+    }
+}))
+for(let i=1; i<audio_names.length; i++) {
+    audios.push(new Howl({
+        src: `./assets/music/1-${audio_names[i]}.mp3`,
+        volume: 0,
+    }))
 }
 
-const au_intro = document.createElement("AUDIO")
-au_intro.src = "./assets/music/0-intro.mp3"
-au_intro.volume = VOL
-au_intro.preload = "auto"
-au_intro.onended = () => {
-    test.innerHTML = "Done!"
-    intro_done = true
-    audios.forEach(audio=>{audio.play()})
-}
+const au_intro = new Howl({
+    src: "./assets/music/0-intro.mp3",
+    volume: VOL,
+    onend: function() {
+        test.innerHTML = "Done!"
+        intro_done = true
+        audios.forEach(audio=>{audio.play()})
+    }
+})
 
 
 // beeps
 let beeps = [null]
 
 for (let i=1; i<audio_names.length; i++) {
-    let beep = document.createElement("AUDIO")
-    beep.src = `./assets/music/2-${audio_names[i]}_beep.mp3`
-    beep.volume = VOL
-    beeps.push(beep)
+    beeps.push(new Howl({
+        src: `./assets/music/2-${audio_names[i]}_beep.mp3`,
+        volume: VOL
+    }))
 }
 
 
@@ -132,7 +130,7 @@ function playPause() {
         if(intro_done){
             audios[0].play();
             for(let i=1; i<audios.length; i++) {
-                audios[i].volume = VOL * st_audio[i]
+                audios[i].volume(VOL * st_audio[i])
                 audios[i].play();
             }
         } else {
@@ -146,23 +144,23 @@ function playPause() {
         if(!intro_done) {
             au_intro.pause();
         } else {
-            audios.forEach(audio => { audio.pause() })
+            audios.forEach(audio=>{audio.pause()})
         }
     }
 }
 
 function stop() {
     // reset the seek of all tracks
-    au_intro.currentTime = 0
+    au_intro.seek(0)
     au_intro.pause();
     for(let i=0; i<audio_names.length; i++) {
-        audios[i].currentTime = 0
+        audios[i].seek(0)
         audios[i].pause()
         st_audio[i] = false
         if(i>0) {
             dom_v[i].style.visibility = "hidden"
             ship_dom[i].src = SHIP_PNG[i][0]
-            audios[i].volume = 0
+            audios[i].volume(0)
         }
     }
 
@@ -183,13 +181,13 @@ function playAll() {
             st_audio[i] = true
             dom_v[i].style.visibility = "visible"
             ship_dom[i].src = SHIP_PNG[i][1]
-            audios[i].volume = VOL
+            audios[i].volume(VOL)
         } else {
             if(i!=A && i!=B) {
                 st_audio[i] = false
                 dom_v[i].style.visibility = "hidden"
                 ship_dom[i].src = SHIP_PNG[i][0]
-                audios[i].volume = 0
+                audios[i].volume(0)
             }
             else if(i==B) {
                 dom_v[i].style.visibility = "hidden"
@@ -220,7 +218,7 @@ function update_ship(id) {
 
     st_audio[id] = !st_audio[id]
     ship_dom[id].src = SHIP_PNG[id][st_audio[id] * 1]
-    audios[id].volume = VOL * st_audio[id]
+    audios[id].volume(VOL * st_audio[id])
 }
 
 function update_state(id) {
