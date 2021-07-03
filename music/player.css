@@ -139,6 +139,29 @@ a:hover {
     margin: 0.5em 0 0 0;
     color: white;
     vertical-align: center;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#show-info {
+    background-color:rgb(95, 75, 139);
+    color: white;
+    width: 69px;
+    height: 20px;
+    border-radius: 5%;
+}
+
+#show-info:hover {
+    animation: info-color-loop 1.5s infinite;
+}
+@keyframes info-color-loop {
+    0%   {background-color: rgb(95, 75, 139);}
+    20%  {background-color: rgb(235,143,117);}
+    40%  {background-color: rgb(214,187,110);}
+    60%  {background-color: rgb(129,216,195);}
+    80%  {background-color: rgb(170,219,114);}
 }
 
 #footer {
