@@ -3,6 +3,7 @@
     <head>
         <title>Stars Choose Two</title>
         <link rel="stylesheet" href="stars.css">
+        <link rel="stylesheet" href="modal.css">
         <link rel="stylesheet" href="player.css">
         <link rel="shortcut icon" type="image/jpg" href="./assets/icons/dancer.png" />
 
@@ -26,10 +27,40 @@
         <meta property="twitter:image" content="https://raw.githubusercontent.com/dTanMan/dtanman.github.io/main/music/assets/preview_pic.png">
     </head>
 
-    <body>
+    <body onload="show_modal();">
         <div id="stars"></div>
         <div id="stars2"></div>
         <div id="stars3"></div>
+        <div id="open-modal" class="modal-window">
+            <div>
+                <h1>So I made spaceship video game music in a weekend.</h1>
+                <p>
+                    <span class="purple-emphasis">my friends had a game idea.</span> the player can control two ships at a time in an infinitely scrolling shoot-em-up, and 
+                    there are four ships to choose from, each with its
+                    <span class="gatling">own</span>
+                    <span class="aim">kind</span>
+                    <span class="spread">of</span>
+                    <span class="bubble">bullets</span>.<br>
+                    tying in to the theme of "<a href="https://itch.io/jam/gmtk-2021">joint together</a>", the player can also combine the two ships to make even more powerful bullets.
+                </p>
+                <p>
+                    <span class="purple-emphasis">i had a musical idea.</span>
+                    <span id="what-if-emphasis">what if the music changes based on the selected ship?</span><br>
+                </p>
+                <p>
+                    primary (<span id="load-intro">⌛️</span>) &nbsp;
+                    secondary (<span id="load-0">⌛️</span>) &nbsp;
+                    gatling (<span id="load-1">⌛️</span>) &nbsp;
+                    aim (<span id="load-2">⌛️</span>) &nbsp;
+                    spread (<span id="load-3">⌛️</span>) &nbsp;
+                    bubble (<span id="load-4">⌛️</span>)<br>
+                    <span class="italics">Note: Best viewed on desktop. Original work by dtanman.</span>
+                </p>
+                <div id="close-button">
+                    <a href="#" title="Close" class="modal-close">ready</a>
+                </div>
+            </div>
+        </div>
         <div id="container">
             <div id="player">
                 <div id="panel-playpause">

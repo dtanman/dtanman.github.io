@@ -278,8 +278,16 @@ function toggleBubble() {
     update_state(BUBBLE)
 }
 
+
+// little details for UX
+// make "play all" button visible after some time
 function show_all() {
     all.style.opacity = 0.6;
 }
 
 setTimeout(show_all, 240000)
+
+// show modal upon page load
+function show_modal() {
+    document.getElementById("show-info").click()
+}

@@ -1,0 +1,105 @@
+#open-modal {
+    font-family: Raleway, sans-serif;
+    line-height: 2em;
+    text-align: justify;
+}
+
+.purple-emphasis {
+    font-weight: bold;
+    background-color: rgb(95, 75, 139);
+    color: white;
+}
+
+.italics {
+    font-style: italic;
+}
+
+#what-if-emphasis:hover {
+    font-weight: bolder;
+    color: black;
+    animation: ship-color-loop 1.5s infinite;
+}
+
+@keyframes ship-color-loop {
+    0%   {color: black;}
+    20%  {color: rgb(235,143,117);}
+    40%  {color: rgb(214,187,110);}
+    60%  {color: rgb(129,216,195);}
+    80%  {color: rgb(170,219,114);}
+}
+
+.modal-window {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.69);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+.modal-window:target {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+.modal-window > div {
+  width: 700px;
+  max-width: 75%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2em;
+  background: white;
+}
+.modal-window header {
+  font-weight: bold;
+}
+.modal-window h1 {
+  font-size: 150%;
+  margin: 0 0 15px;
+}
+
+#close-button {
+    text-align: center;
+}
+
+.modal-close {
+  color: #aaa;
+  border: 2px solid #aaa;
+  text-decoration: none;
+  padding: 10px;
+  text-align: center;
+}
+.modal-close:hover {
+  color: white;
+  border: 2px solid rgb(95, 75, 139);
+}
+
+/* Demo Styles */
+
+.modal-window > div {
+  border-radius: 1rem;
+}
+
+.modal-window div:not(:last-of-type) {
+  margin-bottom: 15px;
+}
+
+small {
+  color: lightgray;
+}
+
+.btn {
+  background-color: white;
+  padding: 1em 1.5em;
+  border-radius: 1rem;
+  text-decoration: none;
+}
+.btn i {
+  padding-right: 0.3em;
+}
