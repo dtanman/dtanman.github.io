@@ -273,7 +273,7 @@ function toggleSpread() {
 
 function toggleBubble() {
     test.innerHTML = "Bubble was pressed!"
-    if(play_all) return;
+    if(play_all) return
     update_ship(BUBBLE)
     update_state(BUBBLE)
 }
@@ -282,9 +282,8 @@ function toggleBubble() {
 // little details for UX
 // make "play all" button visible after some time
 function show_all() {
-    all.style.opacity = 0.6;
+    all.style.opacity = 0.6
 }
-
 setTimeout(show_all, 240000)
 
 // show modal upon page load

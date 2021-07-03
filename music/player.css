@@ -87,19 +87,23 @@
     font-size: 1em;
 }
 
-#gatling-v {
+.gatling {
+    font-weight: bold;
     color: rgb(235,143,117);
 }
 
-#aim-v {
+.aim {
+    font-weight: bold;
     color: rgb(214,187,110);
 }
 
-#spread-v {
+.spread {
+    font-weight: bold;
     color: rgb(129,216,195);
 }
 
-#bubble-v {
+.bubble {
+    font-weight: bold;
     color: rgb(170,219,114);
 }
 
@@ -113,7 +117,11 @@
 }
 
 #smaller-text {
-    font-size: 0.69em;
+    font-size: 1em;
+    margin: 0.5em 0 0 0;
+}
+
+#links {
     margin: 0.5em 0 0 0;
 }
 
@@ -125,6 +133,8 @@
     font-family: Raleway, sans-serif;
     color: white;
     font-size: 1em;
+}
+
 a {
     text-decoration: none;
     color: rgb(95, 75, 139);
