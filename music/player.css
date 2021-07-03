@@ -3,6 +3,20 @@
   src: url('../fonts/Raleway/Raleway-Regular.ttf');
 }
 
+a {
+    text-decoration: none;
+    color: rgb(95, 75, 139);
+}
+a:hover {
+    background-color: rgb(95, 75, 139);
+    color: white;
+    transition-delay: 110ms;
+}
+
+#ready-button {
+    visibility: hidden;
+}
+
 .player-button {
     height: auto;
     width: 25%;
@@ -123,6 +137,8 @@
 
 #links {
     margin: 0.5em 0 0 0;
+    color: white;
+    vertical-align: center;
 }
 
 #footer {
@@ -133,14 +149,4 @@
     font-family: Raleway, sans-serif;
     color: white;
     font-size: 1em;
-}
-
-a {
-    text-decoration: none;
-    color: rgb(95, 75, 139);
-}
-a:hover {
-    background-color: rgb(95, 75, 139);
-    color: white;
-    transition-delay: 110ms;
 }

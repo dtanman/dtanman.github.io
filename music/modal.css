@@ -5,7 +5,6 @@
 }
 
 .purple-emphasis {
-    font-weight: bold;
     background-color: rgb(95, 75, 139);
     color: white;
 }
@@ -69,8 +68,8 @@
 }
 
 .modal-close {
-  color: #aaa;
-  border: 2px solid #aaa;
+  color: black;
+  border: 2px solid black;
   text-decoration: none;
   padding: 10px;
   text-align: center;

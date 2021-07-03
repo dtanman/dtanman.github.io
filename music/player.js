@@ -25,6 +25,7 @@ const test = document.getElementById("debugging-text")
 const pp = document.getElementById("button-pp") // pp = play pause
 const all = document.getElementById("button-warning")
 const notice = document.getElementById("notice-text")
+const ready = document.getElementById("ready-button")
 
 const ship_dom = [
     null,
@@ -42,6 +43,15 @@ const dom_v = [
     document.getElementById("spread-v"),
 ]
 
+const dom_checks = [
+    document.getElementById("load-0"),
+    document.getElementById("load-1"),
+    document.getElementById("load-2"),
+    document.getElementById("load-3"),
+    document.getElementById("load-4"),
+    document.getElementById("load-intro"),
+]
+
 
 // variables
 let playing = false;
@@ -50,7 +60,14 @@ let play_all = false;
 let A = 0;
 let B = 0;
 let st_audio = [true, false, false, false, false]
-
+let load_checks = [
+    [false],         // base ("secondary")
+    [false, false],  // gatling
+    [false, false],  // aim
+    [false, false],  // bubble
+    [false, false],  // spread
+    [false]          // intro ("primary")
+]
 
 // constants
 const AIM = 1;
@@ -75,12 +92,21 @@ audios.push(new Howl({
     // when the 7 minutes are done, no need to loop
     onend: function () {
         notice.innerHTML = "thanks for listening! please share :)"
+    },
+    onload: function(){
+        /* test.innerHTML = test.innerHTML + `./assets/music/1-${audio_names[0]}.mp3 loaded!` + "<br>" */
+        load_checks[0][0] = true
+        update_loading()
     }
 }))
 for(let i=1; i<audio_names.length; i++) {
     audios.push(new Howl({
         src: `./assets/music/1-${audio_names[i]}.mp3`,
         volume: 0,
+        onload: function () {
+            load_checks[i][0] = true
+            update_loading()
+        }
     }))
 }
 
@@ -88,9 +114,14 @@ const au_intro = new Howl({
     src: "./assets/music/0-intro.mp3",
     volume: VOL,
     onend: function() {
-        test.innerHTML = "Done!"
+        /* test.innerHTML = test.innerHTML + "Done!" + "<br>" */
         intro_done = true
         audios.forEach(audio=>{audio.play()})
+    },
+    onload: function () {
+        /* test.innerHTML = test.innerHTML + `./assets/music/0-intro.mp3 loaded!` + "<br>" */
+        load_checks[load_checks.length-1][0] = true
+        update_loading()
     }
 })
 
@@ -101,7 +132,12 @@ let beeps = [null]
 for (let i=1; i<audio_names.length; i++) {
     beeps.push(new Howl({
         src: `./assets/music/2-${audio_names[i]}_beep.mp3`,
-        volume: VOL
+        volume: VOL,
+        onload: function () {
+            /* test.innerHTML = test.innerHTML + `./assets/music/2-${audio_names[i]}_beep.mp3` + "<br>" */
+            load_checks[i][1] = true
+            update_loading()
+        }
     }))
 }
 
@@ -121,9 +157,21 @@ document.addEventListener('keyup', (e)=>{
 
 
 // functions
+function update_loading() {
+    let counter = 0
+    for(let i=0; i<load_checks.length; i++) {
+        let check = load_checks[i].every(x => x)
+        dom_checks[i].innerHTML = check ? '✅' : '⌛️'
+        if(check) counter++
+    }
+    if(counter==load_checks.length) {
+        ready.style.visibility = 'visible'
+    }
+}
+
 function playPause() {
     if(!playing) {
-        test.innerHTML = "Play was pressed!"
+        /* test.innerHTML = test.innerHTML + "Play was pressed!" + "<br>" */
         pp.src = PAUSE_PNG
         playing = true
 
@@ -137,7 +185,7 @@ function playPause() {
             au_intro.play()
         }
     } else {
-        test.innerHTML = "Pause was pressed!"
+        /* test.innerHTML = test.innerHTML + "Pause was pressed!" + "<br>" */
         pp.src = PLAY_PNG
         playing = false
 
@@ -251,29 +299,29 @@ function update_state(id) {
 }
 
 function toggleGatling() {
-    test.innerHTML = "Gatling was pressed!"
+    /* test.innerHTML = test.innerHTML + "Gatling was pressed!" + "<br>" */
     if(play_all) return;
     update_ship(GATLING)
     update_state(GATLING)
 }
 
 function toggleAim() {
-    test.innerHTML = "Aim was pressed!"
+    /* test.innerHTML = test.innerHTML + "Aim was pressed!" + "<br>" */
     if(play_all) return;
     update_ship(AIM)
     update_state(AIM)
 }
 
 function toggleSpread() {
-    test.innerHTML = "Spread was pressed!"
+    /* test.innerHTML = test.innerHTML + "Spread was pressed!" + "<br>" */
     if(play_all) return;
     update_ship(SPREAD)
     update_state(SPREAD)
 }
 
 function toggleBubble() {
-    test.innerHTML = "Bubble was pressed!"
-    if(play_all) return
+    /* test.innerHTML = test.innerHTML + "Bubble was pressed!" + "<br>" */
+    if(play_all) return;
     update_ship(BUBBLE)
     update_state(BUBBLE)
 }
