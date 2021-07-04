@@ -191,6 +191,7 @@ document.addEventListener('keyup', (e)=>{
         case ' ': playPause(); break;
         case 'x': stop(); break;
         case 'm': playAll(); break;
+        case 'i': show_modal(); break;
     }
 })
 
