@@ -70,6 +70,8 @@ let load_checks = [
     [false],         // intro ("primary")
     [false]          // finale ("landing")   
 ]
+let first_all = null
+let done = false
 
 // constants
 const AIM = 1;
@@ -99,7 +101,8 @@ audios.push(new Howl({
         update_loading()
     },
     onend: function () {
-        if (play_all) {
+        let since_first_all = ((new Date())-first_all)/1000
+        if (play_all && since_first_all>60) {
             end_loop()
         }
     },
@@ -140,6 +143,10 @@ const finale = new Howl({
     },
     onend: function () {
         notice.innerHTML = "thanks for listening! please share :)"
+        pp.src = PLAY_PNG
+        playing = false
+        first_all = null
+        done = true
     },
 })
 
@@ -187,6 +194,11 @@ function update_loading() {
 }
 
 function playPause() {
+    if(done) {
+        stop()
+        done = false
+    }
+    
     if(!playing) {
         /* test.innerHTML = test.innerHTML + "Play was pressed!" + "<br>" */
         pp.src = PAUSE_PNG
@@ -237,6 +249,7 @@ function stop() {
     playing = false
     intro_done = false
     play_all = false
+    first_all = null
     A = 0
     B = 0
 
@@ -246,6 +259,10 @@ function stop() {
 }
 
 function playAll() {
+    if(!first_all) {
+        first_all = new Date()
+    }
+
     for (let i=1; i<audio_names.length; i++) {
         if(!play_all) {
             st_audio[i] = true
