@@ -50,6 +50,7 @@ const dom_checks = [
     document.getElementById("load-3"),
     document.getElementById("load-4"),
     document.getElementById("load-intro"),
+    document.getElementById("load-finale"),
 ]
 
 
@@ -66,7 +67,8 @@ let load_checks = [
     [false, false],  // aim
     [false, false],  // bubble
     [false, false],  // spread
-    [false]          // intro ("primary")
+    [false],         // intro ("primary")
+    [false]          // finale ("landing")   
 ]
 
 // constants
@@ -86,24 +88,28 @@ const audio_names = [
     "spread",
 ]
 let audios = []
+// base
 audios.push(new Howl({
     src: `./assets/music/1-${audio_names[0]}.mp3`,
     volume: 0.8*VOL,
-    // when the 7 minutes are done, no need to loop
-    onend: function () {
-        stop()
-        notice.innerHTML = "thanks for listening! please share :)"
-    },
+    loop: true,
     onload: function(){
         /* test.innerHTML = test.innerHTML + `./assets/music/1-${audio_names[0]}.mp3 loaded!` + "<br>" */
         load_checks[0][0] = true
         update_loading()
-    }
+    },
+    onend: function () {
+        if (play_all) {
+            end_loop()
+        }
+    },
 }))
+// audio of four ships
 for(let i=1; i<audio_names.length; i++) {
     audios.push(new Howl({
         src: `./assets/music/1-${audio_names[i]}.mp3`,
         volume: 0,
+        loop: true,
         onload: function () {
             load_checks[i][0] = true
             update_loading()
@@ -121,11 +127,21 @@ const au_intro = new Howl({
     },
     onload: function () {
         /* test.innerHTML = test.innerHTML + `./assets/music/0-intro.mp3 loaded!` + "<br>" */
-        load_checks[load_checks.length-1][0] = true
+        load_checks[load_checks.length-2][0] = true
         update_loading()
     }
 })
 
+const finale = new Howl({
+    src: "./assets/music/3-finale.mp3",
+    volume: VOL,
+    onload: function() {
+        load_checks[load_checks.length-1][0] = true
+    },
+    onend: function () {
+        notice.innerHTML = "thanks for listening! please share :)"
+    },
+})
 
 // beeps
 let beeps = [null]
@@ -249,7 +265,7 @@ function playAll() {
         }
     }
     if(!play_all) {
-        notice.innerHTML = "you chose four. undo to return to toggling."
+        notice.innerHTML = "maximum overdrive activated. approaching finale."
     } else {
         notice.innerHTML = default_notice
     }
@@ -331,6 +347,10 @@ function toggleBubble() {
     update_state(BUBBLE)
 }
 
+function end_loop() {
+    audios.forEach(audio=>audio.stop())
+    finale.play()
+}
 
 // little details for UX
 // make "play all" button visible after some time
