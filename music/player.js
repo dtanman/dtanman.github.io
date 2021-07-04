@@ -91,6 +91,7 @@ audios.push(new Howl({
     volume: 0.8*VOL,
     // when the 7 minutes are done, no need to loop
     onend: function () {
+        stop()
         notice.innerHTML = "thanks for listening! please share :)"
     },
     onload: function(){
@@ -194,6 +195,10 @@ function playPause() {
         } else {
             audios.forEach(audio=>{audio.pause()})
         }
+    }
+
+    if(!play_all) {
+        notice.innerHTML = default_notice
     }
 }
 
