@@ -71,7 +71,7 @@
   color: black;
   border: 2px solid black;
   text-decoration: none;
-  padding: 10px;
+  padding: 10px 50px 10px 50px;
   text-align: center;
 }
 .modal-close:hover {
