@@ -92,7 +92,10 @@ const audio_names = [
 let audios = []
 // base
 audios.push(new Howl({
-    src: `./assets/music/1-${audio_names[0]}.mp3`,
+    src: [
+        `./assets/music/1-${audio_names[0]}.webm`,
+        `./assets/music/1-${audio_names[0]}.mp3`,
+    ],
     volume: 0.8*VOL,
     loop: true,
     onload: function(){
@@ -110,7 +113,10 @@ audios.push(new Howl({
 // audio of four ships
 for(let i=1; i<audio_names.length; i++) {
     audios.push(new Howl({
-        src: `./assets/music/1-${audio_names[i]}.mp3`,
+        src: [
+            `./assets/music/1-${audio_names[i]}.webm`,
+            `./assets/music/1-${audio_names[i]}.mp3`,
+        ],
         volume: 0,
         loop: true,
         onload: function () {
@@ -121,7 +127,10 @@ for(let i=1; i<audio_names.length; i++) {
 }
 
 const au_intro = new Howl({
-    src: "./assets/music/0-intro.mp3",
+    src: [
+        "./assets/music/0-intro.webm",
+        "./assets/music/0-intro.mp3",
+    ],
     volume: VOL,
     onend: function() {
         /* test.innerHTML = test.innerHTML + "Done!" + "<br>" */
@@ -136,7 +145,10 @@ const au_intro = new Howl({
 })
 
 const finale = new Howl({
-    src: "./assets/music/3-finale.mp3",
+    src: [
+        "./assets/music/3-finale.webm",
+        "./assets/music/3-finale.mp3",
+    ],
     volume: VOL,
     onload: function() {
         load_checks[load_checks.length-1][0] = true
@@ -155,7 +167,10 @@ let beeps = [null]
 
 for (let i=1; i<audio_names.length; i++) {
     beeps.push(new Howl({
-        src: `./assets/music/2-${audio_names[i]}_beep.mp3`,
+        src: [
+            `./assets/music/2-${audio_names[i]}_beep.webm`,
+            `./assets/music/2-${audio_names[i]}_beep.mp3`,
+        ],
         volume: VOL,
         onload: function () {
             /* test.innerHTML = test.innerHTML + `./assets/music/2-${audio_names[i]}_beep.mp3` + "<br>" */
