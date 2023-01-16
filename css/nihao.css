@@ -38,6 +38,10 @@ body a:hover {
   height: 100%;
 }
 
+.smol-text {
+  font-size: 0.7em;
+}
+
 #greeting {
   text-align: center;
   position: relative;
