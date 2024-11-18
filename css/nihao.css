@@ -6,6 +6,11 @@
 body {
   margin: 0px;
   font-family: Raleway, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 body a {
@@ -24,13 +29,10 @@ body a:hover {
   text-align: center;
   position: relative;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-
   line-height: 120%;
   font-size: 36px;
+
+  width: 80%;
 }
 
 #linkedin-link {
@@ -50,19 +52,21 @@ body a:hover {
 }
 
 .big-text {
-  font-size: 69px;
+  font-size: 72px;
+  line-height: 0%;
 }
  
 .smol-text {
   font-size: 20px;
+  line-height: 150%;
 }
 
 /* Add this at the bottom of your CSS */
-@media (max-width: 768px) {
+@media (max-width: 820px) {
   #text-and-links {
     font-size: 28px; /* Adjust the font size for smaller screens */
-    line-height: 140%; /* Slightly increase line spacing for readability */
     padding: 10px; /* Add padding for better spacing */
+    width: 80%;
   }
 
   .big-text {
@@ -77,7 +81,7 @@ body a:hover {
 @media (max-width: 480px) {
   #text-and-links {
     font-size: 20px; /* Further adjust font size for very small screens */
-    line-height: 150%; /* Improve readability for narrow viewports */
+    width: 90%;
   }
 
   .big-text {
