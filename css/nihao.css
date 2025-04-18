@@ -103,7 +103,7 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 36px;
+  gap: 56px;
 }
 
 .link-card {
