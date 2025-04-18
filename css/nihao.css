@@ -4,35 +4,46 @@
 }
 
 body {
-  margin: 0px;
   font-family: Raleway, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
 }
 
-body a {
-  color: #5F4B8B;
-  text-decoration: none;
-  transition-duration: 300ms;
-}
+.fancy-link {
+  --default-light: rgba(188, 150, 230, .5);
+  --default-dark: #5F4B8B;
+  --thick: .18em; /* underline height */
 
-body a:hover {
-  color: white;
-  background-color: #5F4B8B;
-  transition-duration: 300ms;
-}
-
-#text-and-links {
-  text-align: center;
   position: relative;
+  color: var(--link-dark, var(--default-dark));
+  text-decoration: none;
+  padding-bottom: var(--thick);
+  /* keeps descenders clear */
 
-  line-height: 120%;
-  font-size: 36px;
+  /* 2‑layer background: rail (100%) + wipe (0%) */
+  background-image:
+    linear-gradient(var(--link-dark, var(--default-dark)) 0 0),
+    /* will animate */
+    linear-gradient(var(--link-light, var(--default-light)) 0 0);
+  /* stays put   */
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  /* stick to baseline */
+  background-size: 0% var(--thick), 100% var(--thick);
+  transition: background-size .3s ease-out;
 
-  width: 80%;
+  /* magic line‑wrapping switch */
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.fancy-link:hover,
+.fancy-link:focus {
+  background-size: 100% var(--thick), 100% var(--thick);
+  /* wipe grows L→R */
+}
+
+
+.portfolio-link > h2 + p {
+  margin-top: -0.8em;
 }
 
 #linkedin-link {
@@ -45,20 +56,6 @@ body a:hover {
   background-color: #2A67BC;
   transition-duration: 300ms;
   color: #ffffff;
-}
-
-.with-link {
-  color: #6a6a6a;
-}
-
-.big-text {
-  font-size: 72px;
-  line-height: 0%;
-}
- 
-.smol-text {
-  font-size: 20px;
-  line-height: 150%;
 }
 
 /* Add this at the bottom of your CSS */
