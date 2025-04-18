@@ -3,8 +3,43 @@
   src: url('../fonts/Raleway/Raleway-Regular.ttf');
 }
 
+:root {
+  --black-text: #3c3a3b;
+  --gray-text: #b7b7b7;
+}
+
+html, body {
+  scroll-behavior: smooth;
+  overflow-y: auto;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Raleway, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--black-text);
+}
+
+.gray-text {
+  color: var(--gray-text)
+}
+
+.container {
+  max-width: 1080px;
+  padding-left: 64px;
+  padding-right: 64px;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 
 .fancy-link {
@@ -35,57 +70,72 @@ body {
   box-decoration-break: clone;
 }
 
-.fancy-link:hover,
-.fancy-link:focus {
+.fancy-link:hover, .fancy-link:focus {
   background-size: 100% var(--thick), 100% var(--thick);
   /* wipe grows L→R */
 }
 
+#header {
+  max-width: 720px;
+  flex: 1;
+}
 
-.portfolio-link > h2 + p {
+#header h1 {
+  margin-top: 0.1em;
+}
+
+#header > h1 + p {
   margin-top: -0.8em;
 }
 
-#linkedin-link {
-  color: #2A67BC;
-  text-decoration: none;
-  transition-duration: 300ms;
+#profile-pic {
+  max-width: 150px;
+  height: auto;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-#linkedin-link:hover {
-  background-color: #2A67BC;
-  transition-duration: 300ms;
-  color: #ffffff;
+#header {
+  text-align: center;
 }
 
-/* Add this at the bottom of your CSS */
-@media (max-width: 820px) {
+#text-and-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 36px;
+}
+
+.link-card {
+  flex: 1;
+}
+
+.link-card > h2 + p {
+  margin-top: -0.6em;
+}
+
+.link-card:hover h2 {
+  background-size: 100% 0.3em;
+  /* Expand the underline on hover */
+}
+
+footer {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  body {
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
+  
   #text-and-links {
-    font-size: 28px; /* Adjust the font size for smaller screens */
-    padding: 10px; /* Add padding for better spacing */
-    width: 80%;
+    flex-direction: column;
+    gap: 24px;
   }
 
-  .big-text {
-    font-size: 48px; /* Scale down the large text */
-  }
-
-  .smol-text {
-    font-size: 16px; /* Make the small text a bit smaller but still readable */
-  }
-}
-
-@media (max-width: 480px) {
-  #text-and-links {
-    font-size: 20px; /* Further adjust font size for very small screens */
-    width: 90%;
-  }
-
-  .big-text {
-    font-size: 36px; /* Scale the headline further */
-  }
-
-  .smol-text {
-    font-size: 14px; /* Make the small text smaller */
+  .link-card {
+    flex: unset;
+    width: 100%;
   }
 }
